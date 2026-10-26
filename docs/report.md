@@ -45,8 +45,7 @@
       - [Biểu thức chính quy Ảnh đại diện](#biểu-thức-chính-quy-ảnh-đại-diện)
 - [6. Kết luận](#6-kết-luận)
 - [7. Kết quả đạt được](#7-kết-quả-đạt-được)
-  - [7.1. Bảng dữ liệu kiểm thử](#71-bảng-dữ-liệu-kiểm-thử)
-  - [7.2. Hướng dẫn chạy chương trình và Minh chứng thực nghiệm](#72-hướng-dẫn-chạy-chương-trình-và-minh-chứng-thực-nghiệm)
+  - [Bảng dữ liệu kiểm chứng kết quả](#bảng-dữ-liệu-kiểm-chứng-kết-quả)
 - [8. Tài liệu tham khảo](#8-tài-liệu-tham-khảo)
 
 ---
@@ -457,23 +456,34 @@ Bên cạnh đó, phương thức tổng thể `ValidateStaff(Staff staff)` tự
 
 ## 6. Kết luận
 
-### Đánh giá kết quả
+Mô hình thẩm định dữ liệu kết hợp thuộc tính tùy biến (Attributes), cơ chế phản chiếu (Reflection) và biểu thức chính quy (Regex) đã giải quyết toàn diện bài toán kiểm tra tính hợp thức của thông tin nhân viên trong ngữ cảnh cập nhật dữ liệu, xử lý chặt chẽ mọi trường hợp biên cú pháp và loại trừ triệt để các dữ liệu không hợp lệ.
 
-1. **Hoàn thành trọn vẹn mục tiêu đề bài:** Đã cài đặt một ứng dụng C# .NET 10 hoàn chỉnh kết hợp **Attributes**, **Reflection** và **Biểu thức chính quy** để kiểm tra tính hợp lệ dữ liệu.
-2. **Cấu trúc dự án rõ ràng, chuẩn mực:** Kiến trúc ứng dụng tuân thủ nghiêm ngặt nguyên lý phân tách trách nhiệm, dễ đọc, dễ hiểu và dễ dàng mở rộng cho các thực thể dữ liệu khác ngoài `Staff`.
-3. **Giải quyết triệt để bài toán số điện thoại (Bài tập 2):** Xây dựng biểu thức chính quy bao phủ toàn diện chuẩn viễn thông Việt Nam, linh hoạt với mã quốc tế `+84`, các loại dấu phân tách, đồng thời loại trừ chuẩn xác các trường hợp số ảo, số ma (`0123456789`).
-4. **Trực quan hóa sinh động:** Giao diện web cho phép người dùng kiểm thử tức thời, đồng thời hiển thị bảng bóc tách Reflection (tên thuộc tính, kiểu thuộc tính tùy biến, mẫu biểu thức chính quy áp dụng, giá trị thực tế, kết quả so khớp), đóng vai trò như một công cụ minh họa trực quan.
+Kỹ thuật phản chiếu tại thời gian chạy cho phép tự động hóa hoàn toàn quy trình trích xuất siêu dữ liệu và thẩm định mà không cần phụ thuộc vào các cấu trúc rẽ nhánh điều kiện thủ công, đem lại tính module hóa cao, mã nguồn tường minh và khả năng mở rộng tối ưu khi mô hình dữ liệu thay đổi hoặc bổ sung thêm thuộc tính mới.
 
-### Hướng phát triển mở rộng
-
-- Tích hợp kiểm tra tính logic thời gian nâng cao (ví dụ: ngày bắt đầu làm việc không được lớn hơn ngày hiện tại quá xa).
-- Bổ sung cơ chế bộ nhớ đệm cho siêu dữ liệu Reflection để tối ưu hóa hiệu năng khi xử lý khối lượng dữ liệu lớn hàng trăm nghìn bản ghi cùng lúc.
+Biểu thức chính quy cho số điện thoại theo quy chuẩn viễn thông Việt Nam đã phân loại chính xác các đầu số mạng di động hiện hành, hỗ trợ linh hoạt tiền tố quốc tế +84 thay cho số 0 và loại trừ hoàn toàn các trường hợp số ma, số ảo (như 0123456789), chứng minh tính đúng đắn và sự khớp nối hoàn hảo giữa mô hình lý thuyết và chương trình thực thi.
 
 ---
 
 ## 7. Kết quả đạt được
 
-### 7.1. Bảng dữ liệu kiểm thử
+Một ứng dụng hoàn chỉnh được xây dựng bằng C# trên nền tảng .NET 10 với giao diện web trực quan, đáp ứng trọn vẹn các mục tiêu đề ra:
+
+- Cho phép người dùng nhập và cập nhật toàn diện 6 trường dữ liệu nhân viên: mã định danh, họ và tên, email, số điện thoại, ngày bắt đầu làm việc và ảnh đại diện.
+- Tự động hóa quá trình thẩm định dữ liệu tại thời gian chạy bằng cơ chế Reflection kết hợp biểu thức chính quy mà không cần viết các câu lệnh điều kiện thủ công.
+- Nhận diện chuẩn xác số điện thoại theo quy hoạch viễn thông Việt Nam và chặn đứng các trường hợp số ma, số ảo như `0123456789`.
+- Cung cấp tính năng điền nhanh dữ liệu mẫu và hiển thị bảng đối chiếu siêu dữ liệu thời gian thực (tên thuộc tính, kiểu thuộc tính tùy biến, mẫu biểu thức chính quy, giá trị thực tế và trạng thái hợp lệ).
+
+![Giao diện ứng dụng cập nhật và thẩm định thông tin nhân viên](images/screenshot_valid.png)
+
+_Hình 1: Giao diện ứng dụng thẩm định thông tin nhân viên thành công với bảng đối chiếu Reflection thời gian thực._
+
+Hệ thống cũng kiểm soát và phát hiện chính xác khi dữ liệu vi phạm quy cách hoặc chứa số ma:
+
+![Giao diện phát hiện lỗi và chặn số ma 0123456789](images/screenshot_invalid.png)
+
+_Hình 2: Giao diện ứng dụng phát hiện lỗi vi phạm định dạng và chặn đứng số điện thoại ma 0123456789._
+
+### Bảng dữ liệu kiểm chứng kết quả
 
 #### Bảng 1: Kiểm thử Biểu thức chính quy Số điện thoại (Bài tập 2)
 
@@ -508,54 +518,6 @@ Bên cạnh đó, phương thức tổng thể `ValidateStaff(Staff staff)` tự
 | **PhoneNumber**  | `0912345678`, `+84 912 345 678`         | `0123456789`, `phone12345`          | Số ma đầu 012 hoặc chứa chữ cái          |
 | **StartingDate** | `2026-10-01`, `2025-12-31`              | `31/12/2026`, `2026-13-45`          | Sai định dạng YYYY-MM-DD hoặc tháng > 12 |
 | **Photo**        | `avatar.jpg`, `https://cdn.site/nv.png` | `tai-lieu.pdf`, `setup.exe`         | Đuôi tệp không thuộc định dạng hình ảnh  |
-
----
-
-### 7.2. Hướng dẫn chạy chương trình và Minh chứng thực nghiệm
-
-#### Hướng dẫn khởi chạy ứng dụng
-
-1. Mở cửa sổ dòng lệnh tại thư mục gốc của dự án:
-   ```bash
-   cd "d:\DU LIEU\CTU\Kiem chung mo hinh\Thưc hanh\Buoi 3\Regular-Expressions"
-   ```
-2. Thực thi lệnh chạy máy chủ Web .NET:
-   ```bash
-   dotnet run
-   ```
-3. Truy cập vào trình duyệt web theo địa chỉ: `http://localhost:5000` (hoặc cổng được ứng dụng thông báo trong console).
-
----
-
-#### Khung chèn hình ảnh minh chứng thực tế
-
-> [!TIP]
-> **Hướng dẫn chèn ảnh minh chứng vào báo cáo:**  
-> Sau khi chạy ứng dụng trên trình duyệt web, người thực hiện tiến hành chụp màn hình tại 3 trạng thái kiểm thử dưới đây và lưu ảnh vào thư mục `docs/images/`, sau đó cập nhật đường dẫn ảnh tương ứng vào các thẻ dưới đây:
-
-##### 1. Trạng thái 1: Giao diện ban đầu của ứng dụng
-
-_Mô tả: Giao diện hiển thị form thông tin nhân viên rỗng, bảng soi chiếu Reflection bên phải ở trạng thái chờ kiểm tra._
-
-```
-![Ảnh 1: Giao diện ứng dụng ban đầu](images/screenshot_initial.png)
-```
-
-##### 2. Trạng thái 2: Thử nghiệm trường hợp DỮ LIỆU HỢP LỆ (Valid Data)
-
-_Mô tả: Nhấn nút **"Điền mẫu hợp lệ"** hoặc nhập số điện thoại `+84 912 345 678`, email `nvan@company.vn`. Hệ thống thông báo thành công màu xanh lá, bảng bên phải hiển thị toàn bộ 6/6 trường đều đạt trạng thái "Hợp lệ" với mẫu Regex tương ứng._
-
-```
-![Ảnh 2: Kiểm thử dữ liệu hợp lệ thành công](images/screenshot_valid.png)
-```
-
-##### 3. Trạng thái 3: Thử nghiệm trường hợp DỮ LIỆU KHÔNG HỢP LỆ & SỐ MA `0123456789` (Invalid Data)
-
-_Mô tả: Nhấn nút **"Điền mẫu lỗi"**. Hệ thống phát hiện số điện thoại `0123456789` là số ma/ảo vi phạm regex chuẩn Việt Nam, email `email_sai` thiếu `@`, file ảnh `tai-lieu.pdf` sai định dạng. Banner màu đỏ hiển thị thông báo lỗi chi tiết, bảng bên phải làm nổi bật các trường vi phạm._
-
-```
-![Ảnh 3: Phát hiện lỗi vi phạm và chặn số ma 0123456789](images/screenshot_invalid.png)
-```
 
 ---
 
