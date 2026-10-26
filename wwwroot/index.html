@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cập nhật thông tin nhân viên</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="dashboard-grid">
+            <!-- Cột trái: Biểu mẫu cập nhật thông tin -->
+            <section class="card form-card">
+                <!-- Header -->
+                <div class="form-header">
+                    <div class="avatar-section">
+                        <div class="avatar-preview" id="avatar-preview">
+                            <svg class="avatar-fallback" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            <img id="avatar-img" class="avatar-img" alt="Ảnh đại diện" style="display: none;">
+                        </div>
+                        <div class="header-text">
+                            <h1 class="form-title">Cập nhật thông tin nhân viên</h1>
+                            <p class="form-subtitle">Chỉnh sửa hồ sơ cá nhân và lưu thông tin vào hệ thống</p>
+                        </div>
+                    </div>
+
+                    <!-- Nút thao tác nhanh dữ liệu -->
+                    <div class="header-tools">
+                        <span class="tools-label">Dữ liệu thử:</span>
+                        <button type="button" id="btn-fill-valid" class="tool-btn">Mẫu hợp lệ</button>
+                        <button type="button" id="btn-fill-invalid" class="tool-btn">Mẫu thử lỗi</button>
+                    </div>
+                </div>
+
+                <!-- Thông báo trạng thái phản hồi -->
+                <div id="status-banner" class="status-banner" style="display: none;">
+                    <div class="status-icon" id="status-icon"></div>
+                    <div class="status-content">
+                        <div class="status-title" id="status-title"></div>
+                        <div class="status-desc" id="status-desc"></div>
+                    </div>
+                </div>
+
+                <!-- Biểu mẫu chính -->
+                <form id="staff-form" class="staff-form" novalidate>
+                    <div class="form-grid">
+                        <!-- Mã nhân viên -->
+                        <div class="form-field" id="field-group-StaffID">
+                            <label for="StaffID" class="field-label">
+                                Mã nhân viên <span class="required">*</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                id="StaffID" 
+                                name="StaffID" 
+                                class="field-input" 
+                                placeholder="Ví dụ: 1024"
+                                autocomplete="off"
+                            >
+                            <span class="field-error" id="error-StaffID"></span>
+                        </div>
+
+                        <!-- Họ và tên -->
+                        <div class="form-field" id="field-group-StaffName">
+                            <label for="StaffName" class="field-label">
+                                Họ và tên <span class="required">*</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                id="StaffName" 
+                                name="StaffName" 
+                                class="field-input" 
+                                placeholder="Ví dụ: Nguyễn Văn An"
+                                autocomplete="off"
+                            >
+                            <span class="field-error" id="error-StaffName"></span>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="form-field" id="field-group-Email">
+                            <label for="Email" class="field-label">
+                                Địa chỉ Email <span class="required">*</span>
+                            </label>
+                            <input 
+                                type="email" 
+                                id="Email" 
+                                name="Email" 
+                                class="field-input" 
+                                placeholder="Ví dụ: nvan@company.vn"
+                                autocomplete="off"
+                            >
+                            <span class="field-error" id="error-Email"></span>
+                        </div>
+
+                        <!-- Số điện thoại -->
+                        <div class="form-field" id="field-group-PhoneNumber">
+                            <label for="PhoneNumber" class="field-label">
+                                Số điện thoại <span class="required">*</span>
+                            </label>
+                            <input 
+                                type="tel" 
+                                id="PhoneNumber" 
+                                name="PhoneNumber" 
+                                class="field-input" 
+                                placeholder="Ví dụ: 0912345678 hoặc +84 912 345 678"
+                                autocomplete="off"
+                            >
+                            <span class="field-error" id="error-PhoneNumber"></span>
+                        </div>
+
+                        <!-- Ngày bắt đầu làm việc -->
+                        <div class="form-field" id="field-group-StartingDate">
+                            <label for="StartingDate" class="field-label">
+                                Ngày bắt đầu làm việc <span class="required">*</span>
+                            </label>
+                            <input 
+                                type="date" 
+                                id="StartingDate" 
+                                name="StartingDate" 
+                                class="field-input"
+                            >
+                            <span class="field-error" id="error-StartingDate"></span>
+                        </div>
+
+                        <!-- Tệp ảnh đại diện -->
+                        <div class="form-field" id="field-group-Photo">
+                            <label for="Photo" class="field-label">
+                                Tệp ảnh đại diện <span class="required">*</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                id="Photo" 
+                                name="Photo" 
+                                class="field-input" 
+                                placeholder="Ví dụ: avatar-nv1024.jpg"
+                                autocomplete="off"
+                            >
+                            <span class="field-error" id="error-Photo"></span>
+                        </div>
+                    </div>
+
+                    <!-- Nút thao tác -->
+                    <div class="form-footer">
+                        <button type="submit" id="btn-submit" class="btn btn-primary">
+                            Lưu thông tin
+                        </button>
+                        <button type="button" id="btn-reset" class="btn btn-secondary">
+                            Đặt lại
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Cột phải: Bảng chi tiết kiểm tra tính hợp lệ dữ liệu (tự động hiển thị) -->
+            <section class="card details-card">
+                <div class="details-header">
+                    <h2 class="details-title">Chi tiết kiểm tra tính hợp lệ dữ liệu</h2>
+                    <span class="details-status-tag" id="log-indicator">Chờ kiểm tra</span>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="details-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 22%;">Trường thông tin</th>
+                                <th style="width: 24%;">Giá trị gửi đi</th>
+                                <th style="width: 16%;">Trạng thái</th>
+                                <th style="width: 38%;">Quy tắc đối chiếu</th>
+                            </tr>
+                        </thead>
+                        <tbody id="log-table-body">
+                            <tr>
+                                <td colspan="4" class="empty-log">Đang tải dữ liệu kiểm tra...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
