@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cập nhật thông tin nhân viên</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=3">
 </head>
 <body>
     <div class="page-wrapper">
@@ -42,6 +42,17 @@
                         <div class="status-title" id="status-title"></div>
                         <div class="status-desc" id="status-desc"></div>
                     </div>
+                </div>
+
+                <!-- Thanh trạng thái đang chỉnh sửa (nếu có) -->
+                <div id="editing-indicator" class="editing-indicator" style="display: none;">
+                    <div class="editing-text">
+                        <span>Đang sửa nhân viên:</span>
+                        <strong id="editing-staff-name"></strong>
+                    </div>
+                    <button type="button" id="btn-cancel-edit" class="tool-btn btn-cancel-edit">
+                        Hủy sửa (Tạo mới)
+                    </button>
                 </div>
 
                 <!-- Biểu mẫu chính -->
@@ -180,8 +191,54 @@
                 </div>
             </section>
         </div>
+
+        <!-- Khu vực bên dưới: Danh sách nhân viên đã lưu (Local) -->
+        <section class="card staff-list-card" id="staff-list-section">
+            <div class="staff-list-header">
+                <div class="staff-list-title-group">
+                    <div class="list-icon-badge">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="details-title">Danh sách nhân viên đã lưu vào hệ thống</h2>
+                    </div>
+                    <span class="staff-count-badge" id="staff-count-badge">0 nhân viên</span>
+                </div>
+                <div class="staff-list-actions">
+                    <button type="button" id="btn-clear-staff-list" class="tool-btn btn-danger-action" title="Xóa toàn bộ danh sách nhân viên đã lưu">
+                        Xóa tất cả
+                    </button>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="details-table staff-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 60px;">Ảnh</th>
+                            <th style="width: 100px;">Mã NV</th>
+                            <th style="width: 180px;">Họ và tên</th>
+                            <th style="width: 200px;">Email</th>
+                            <th style="width: 140px;">Số điện thoại</th>
+                            <th style="width: 120px;">Ngày bắt đầu</th>
+                            <th style="width: 120px; text-align: right;">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="saved-staff-table-body">
+                        <tr>
+                            <td colspan="7" class="empty-log">Chưa có nhân viên nào được lưu trong bộ nhớ local.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
     </div>
 
-    <script src="js/app.js"></script>
+    <script src="js/app.js?v=3"></script>
 </body>
 </html>

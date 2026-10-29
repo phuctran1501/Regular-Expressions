@@ -45,11 +45,12 @@ html, body {
     min-height: 100vh;
 }
 
-/* Căn giữa toàn bộ giao diện theo cả chiều ngang và chiều dọc */
+/* Căn giữa toàn bộ giao diện theo chiều ngang, cuộn tự nhiên theo chiều dọc */
 body {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     background-color: var(--bg-page);
     color: var(--text-main);
     font-family: var(--font-family);
@@ -219,6 +220,41 @@ body {
 .status-desc {
     margin-top: 2px;
     opacity: 0.95;
+}
+
+/* Thanh trạng thái đang chỉnh sửa */
+.editing-indicator {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #eff6ff;
+    border: 1px solid #bfdbfe;
+    color: #1e40af;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 13.5px;
+    gap: 10px;
+}
+
+.editing-text {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.btn-cancel-edit {
+    font-size: 12.5px;
+    padding: 4px 10px;
+    background-color: #ffffff;
+    border-color: #93c5fd;
+    color: #1e40af;
+}
+
+.btn-cancel-edit:hover {
+    background-color: #dbeafe;
+    border-color: #60a5fa;
 }
 
 /* Form Layout */
@@ -463,4 +499,176 @@ body {
     text-align: center;
     color: var(--text-muted);
     padding: 24px 0 !important;
+}
+
+/* ==========================================================================
+   Phần giao diện bên dưới: Danh sách nhân viên đã lưu (Local)
+   ========================================================================== */
+.staff-list-card {
+    margin-top: 32px;
+}
+
+.staff-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.staff-list-title-group {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.list-icon-badge {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: #f1f5f9;
+    border: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1e293b;
+    flex-shrink: 0;
+}
+
+.staff-list-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.staff-count-badge {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background-color: #e2e8f0;
+    color: #334155;
+    margin-left: 6px;
+}
+
+.btn-danger-action {
+    color: #b91c1c;
+    border-color: #fca5a5;
+    background-color: #fff;
+    transition: all 0.15s ease;
+}
+
+.btn-danger-action:hover {
+    background-color: #fef2f2;
+    border-color: #f87171;
+    color: #991b1b;
+}
+
+.staff-table {
+    width: 100%;
+}
+
+.staff-table th {
+    padding: 12px 14px;
+}
+
+.staff-table td {
+    padding: 12px 14px;
+}
+
+.staff-avatar-cell {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #f1f5f9;
+    border: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: #475569;
+}
+
+.staff-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.staff-id-tag {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #0f172a;
+    background-color: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.staff-name-text {
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.staff-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.btn-row-action {
+    padding: 5px 10px;
+    font-size: 12.5px;
+    font-family: inherit;
+    font-weight: 500;
+    border-radius: 5px;
+    border: 1px solid var(--border-input);
+    cursor: pointer;
+    background-color: #ffffff;
+    transition: all 0.15s ease;
+}
+
+.btn-row-edit {
+    color: #1d4ed8;
+    border-color: #bfdbfe;
+    background-color: #eff6ff;
+}
+
+.btn-row-edit:hover {
+    background-color: #dbeafe;
+    border-color: #93c5fd;
+    color: #1e40af;
+}
+
+.btn-row-delete {
+    color: #dc2626;
+    border-color: #fecaca;
+    background-color: #fef2f2;
+}
+
+.btn-row-delete:hover {
+    background-color: #fee2e2;
+    border-color: #fca5a5;
+    color: #991b1b;
+}
+
+@keyframes highlightFade {
+    0% {
+        background-color: #ecfdf5;
+    }
+    100% {
+        background-color: transparent;
+    }
+}
+
+.row-highlight {
+    animation: highlightFade 2.5s ease-out forwards;
 }
