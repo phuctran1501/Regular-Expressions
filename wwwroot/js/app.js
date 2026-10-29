@@ -77,6 +77,14 @@ document.addEventListener("DOMContentLoaded", () => {
       StartingDate: "2026-10-20",
       Photo: "avatar-nv1026.jpg",
     },
+    {
+      StaffID: "1027",
+      StaffName: "Trần Trọng Phúc",
+      Email: "ttp@company.vn",
+      PhoneNumber: "+84905123256",
+      StartingDate: "2026-10-20",
+      Photo: "avatar-nv1027.jpg",
+    },
   ];
 
   // Dữ liệu thử chứa lỗi để kiểm tra định dạng
