@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cập nhật thông tin nhân viên</title>
-    <link rel="stylesheet" href="css/style.css?v=3">
+    <link rel="stylesheet" href="css/style.css?v=4">
 </head>
 <body>
     <div class="page-wrapper">
@@ -237,6 +237,71 @@
                 </table>
             </div>
         </section>
+    </div>
+
+    <!-- Modal: Phân tích cú pháp Biểu thức chính quy trực quan -->
+    <div id="regex-modal" class="modal-overlay" style="display: none;" role="dialog" aria-modal="true">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <span class="modal-badge" id="modal-attr-badge">[Attribute]</span>
+                    <h3 class="modal-title" id="modal-field-title">Phân tích Biểu thức chính quy</h3>
+                </div>
+                <button type="button" class="modal-close-btn" id="modal-close-btn" title="Đóng (Esc)">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <!-- Khối hiển thị mẫu nguyên bản có màu sắc -->
+                <div class="modal-section">
+                    <label class="modal-section-label">Biểu thức chính quy đầy đủ:</label>
+                    <div class="regex-full-display" id="modal-full-regex"></div>
+                </div>
+
+                <!-- Bảng bóc tách từng token thành phần -->
+                <div class="modal-section">
+                    <label class="modal-section-label">Bóc tách ý nghĩa từng thành phần cú pháp:</label>
+                    <div class="table-responsive">
+                        <table class="details-table token-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 25%;">Thành phần (Token)</th>
+                                    <th style="width: 48%;">Ý nghĩa kỹ thuật &amp; Nghiệp vụ</th>
+                                    <th style="width: 27%;">Quy chuẩn kiểm chứng</th>
+                                </tr>
+                            </thead>
+                            <tbody id="modal-token-body">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Công cụ thử nghiệm tức thì (Live Tester) -->
+                <div class="modal-section live-test-box">
+                    <label class="modal-section-label">Thử nghiệm trực tiếp với Biểu thức chính quy này:</label>
+                    <div class="live-test-row">
+                        <input type="text" id="modal-test-input" class="field-input live-test-input" placeholder="Nhập giá trị bất kỳ để kiểm tra so khớp ngay lập tức...">
+                        <span id="modal-test-badge" class="badge-tag-valid" style="display: none;">Khớp</span>
+                    </div>
+                    <div id="modal-test-feedback" class="live-test-feedback"></div>
+                </div>
+
+                <!-- Ví dụ đối chiếu thực tế -->
+                <div class="modal-section examples-grid">
+                    <div class="example-box example-valid">
+                        <div class="example-title">✓ Các mẫu hợp lệ tiêu biểu</div>
+                        <ul id="modal-valid-examples" class="example-list"></ul>
+                    </div>
+                    <div class="example-box example-invalid">
+                        <div class="example-title">✕ Các mẫu bị từ chối &amp; Lý do loại trừ</div>
+                        <ul id="modal-invalid-examples" class="example-list"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="modal-close-footer-btn">Đóng lại (Esc)</button>
+            </div>
+        </div>
     </div>
 
     <script src="js/app.js?v=3"></script>
