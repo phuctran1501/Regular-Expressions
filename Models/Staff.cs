@@ -14,7 +14,7 @@ namespace StaffValidationApp.Models
         [EmailCheck(@"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$", "Địa chỉ email không đúng định dạng")]
         public string Email { get; set; } = string.Empty;
 
-        [PhoneCheck(@"^(?:(?:\+84|0)(?:(?:3[2-9]|5[25689]|7[06-9]|8[1-9]|9\d)(?:[-.\s]?\d{3})[-.\s]?\d{4}|2\d{1,2}(?:[-.\s]?\d{3,4})[-.\s]?\d{4})|\((?:\+84|0)2\d{1,2}\)[-.\s]?\d{3,4}[-.\s]?\d{4})$", "Số điện thoại không hợp lệ theo chuẩn Việt Nam (hỗ trợ 10 số di động các mạng 03, 05, 07, 08, 09 hoặc +84 thay số 0; loại bỏ số ma)")]
+        [PhoneCheck(@"^(?:(?:\+84|0)(?:(?:3[2-9]|5[25689]|7[06-9]|8[1-9]|9\d)(?:[-.\s]?\d{3})[-.\s]?\d{4}|2\d{1,2}(?:[-.\s]?\d{3,4})[-.\s]?\d{4})|\((?:\+84|0)2\d{1,2}\)[-.\s]?\d{3,4}[-.\s]?\d{4})$", "Số điện thoại không hợp lệ theo chuẩn Việt Nam")]
         public string PhoneNumber { get; set; } = string.Empty;
 
         [StartingDateCheck(@"^\d{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])$", "Ngày bắt đầu làm việc phải đúng định dạng YYYY-MM-DD")]
