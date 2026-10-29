@@ -9,8 +9,8 @@ namespace StaffValidationApp.Attributes
         public string ErrorMessage { get; set; }
 
         public PhotoCheckAttribute(
-            string re = @"^(?:https?:\/\/.+\/|[a-zA-Z0-9_\-\\\/]+)?[\w\-\.]+\.(?:jpg|jpeg|png|webp|gif|svg)$",
-            string errorMessage = "Tên tệp hình ảnh hoặc URL không hợp lệ (phải có phần mở rộng .jpg, .jpeg, .png, .webp, .svg)")
+            string re,
+            string errorMessage)
         {
             this.RE = re;
             this.ErrorMessage = errorMessage;

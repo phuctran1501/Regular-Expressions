@@ -9,8 +9,8 @@ namespace StaffValidationApp.Attributes
         public string ErrorMessage { get; set; }
 
         public StaffNameCheckAttribute(
-            string re = @"^[\p{L}\s.']{2,60}$",
-            string errorMessage = "Họ và tên chỉ được chứa chữ cái, khoảng trắng và dài từ 2 đến 60 ký tự")
+            string re,
+            string errorMessage)
         {
             this.RE = re;
             this.ErrorMessage = errorMessage;

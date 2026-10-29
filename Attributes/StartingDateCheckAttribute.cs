@@ -9,8 +9,8 @@ namespace StaffValidationApp.Attributes
         public string ErrorMessage { get; set; }
 
         public StartingDateCheckAttribute(
-            string re = @"^\d{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])$",
-            string errorMessage = "Ngày bắt đầu làm việc phải đúng định dạng chuẩn YYYY-MM-DD")
+            string re,
+            string errorMessage)
         {
             this.RE = re;
             this.ErrorMessage = errorMessage;

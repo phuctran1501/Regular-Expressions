@@ -9,8 +9,8 @@ namespace StaffValidationApp.Attributes
         public string ErrorMessage { get; set; }
 
         public StaffIdCheckAttribute(
-            string re = @"^(?:NV)?[1-9]\d{0,7}$",
-            string errorMessage = "Số định danh phải là số nguyên dương hợp lệ hoặc có tiền tố NV")
+            string re,
+            string errorMessage)
         {
             this.RE = re;
             this.ErrorMessage = errorMessage;
